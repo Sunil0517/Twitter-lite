@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  name    String
+  email   String   @unique
+  password String 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  follower_following follower_following[]
+  hashtag hashtag[]
+  tweet tweet[]
+}
+
+model follower_following {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  typeId  Int
+  user    User     @relation(fields: [userId], references: [id])
+  type    follow_type @relation(fields: [typeId], references: [id])
+}
+
+
+model follow_type{
+  id      Int      @id @default(autoincrement())
+  type_name    String
+  follower_following follower_following[]
+}
+
+model hashtag{
+  id      Int      @id @default(autoincrement())
+  hashtag_name    String
+  createdAt DateTime @default(now())
+  userId Int
+  user    User     @relation(fields: [userId], references: [id])
+  tweet_hashtag tweet_hashtag[]
+}
+
+model tweet_hashtag{
+  id      Int      @id @default(autoincrement())
+  hashtagId Int
+  tweetId Int
+  hashtag hashtag @relation(fields: [hashtagId], references: [id])
+  tweet tweet @relation(fields: [tweetId], references: [id])
+
+}
+
+model like{
+  id      Int      @id @default(autoincrement())
+  tweetId Int
+  count Int 
+  tweet tweet @relation(fields: [tweetId], references: [id])
+}
+
+model tweet{
+  id      Int      @id @default(autoincrement())
+  userId Int
+  loaction String
+  content String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  like like[]
+  user    User     @relation(fields: [userId], references: [id])
+  tweet_hashtag tweet_hashtag[]
+  
+  //self joins 
+  retweetId Int? @unique
+  retweet tweet? @relation("Retweets", fields: [retweetId], references: [id])
+  tweet tweet? @relation("Retweets")
+}
+
+
+
