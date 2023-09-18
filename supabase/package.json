@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.2.0",
+    "@prisma/client": "^5.3.1",
     "@prisma/studio": "^0.494.0",
     "@supabase/postgrest-js": "^1.8.4",
     "@supabase/supabase-js": "^2.33.2",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
-    "prisma": "^5.2.0"
+    "prisma": "^5.3.1"
   },
   "description": ""
 }

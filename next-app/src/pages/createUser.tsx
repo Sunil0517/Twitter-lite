@@ -2,15 +2,21 @@ import React, { FormEvent } from 'react';
 import { useState } from 'react';
 
 export default function Page() {
+
+  
+
+
   return (
     <div className='container'>
       <div className='flex justify-center m-8 my-8'>
         <form onSubmit={
             async(e: any) => {
+
               e.preventDefault();
               const name = e.currentTarget.name.value
               const email = e.currentTarget.email.value;
               const password = e.currentTarget.password.value;
+              console.log(name, email, password);
               fetch('http://localhost:3004/users', {
                 method: 'POST',
                 headers: {
@@ -19,7 +25,9 @@ export default function Page() {
                 body: JSON.stringify({ name, email, password }),
               }
               );
-              console.log(name, email, password);
+
+              window.open('../user','_self');
+              
             }
           }>
           <div className="mb-4">
@@ -32,6 +40,7 @@ export default function Page() {
               id="name"
               className="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:border-blue-500"
               placeholder="Enter your name"
+              required
             />
           </div>
 
@@ -43,6 +52,7 @@ export default function Page() {
               type="text"
               name="email"
               id='email'
+              required
               className="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:border-blue-500"
               placeholder="Enter your email"
             />
@@ -58,10 +68,14 @@ export default function Page() {
               id='password'
               className="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:border-blue-500"
               placeholder="Enter your password"
+              required
             />
           </div>
 
-          <button type="submit" className='create' onClick={()=>window.open('./')}>Submit</button>
+          <button type="submit" className='create'>Submit</button>
+          <button className="ml-10 create"  onClick={()=>window.open('./','_self')}>
+            Home
+        </button>
         </form>
       </div>
     </div>

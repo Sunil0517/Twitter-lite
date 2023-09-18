@@ -40,26 +40,43 @@ const rightside = () => {
         </div>
       </div>
       <div className="flex flex-col rounded-xl bg-neutral-900 my-4">
-        <h3 className="font-bold text-xl my-4 px-4">Who to follow</h3>
-        <div>
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="hover:bg-white/10 p-4 flex justify-between items-center last:rounded-b-xl transition duration-200"
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-neutral-600 rounded-full flex-none"></div>
-                <div className="flex flex-col">
-                  <div className="font-bold text-white">Other User</div>
-                  <div className="text-gray-500 text-xs">@otheruser1232</div>
-                </div>
-              </div>
+        <div className='container'>
+            <div className='flex justify-center m-8 my-8'>
+                <form onSubmit={
+                    async(e: any) => {
+                    e.preventDefault();
+                    const id = e.currentTarget.id.value;
+                    fetch(`http://localhost:3004/tweets/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                        'Content-Type': 'application/json',
+                        }
+                    }
+                    );
 
-              <button className="rounded-full px-6 py-2 bg-white text-neutral-950">
-                Follow
-              </button>
+                    window.open('../','_self');
+                    
+                    }
+                }>
+                <div className="mb-4">
+                    <label htmlFor="name" className="block text-white-700 text-sm font-bold mb-2">
+                    Enter id to remove Tweet 
+                    </label>
+                    <input
+                    type='number'
+                    name="id"
+                    id="id"
+                    className="w-full px-3 py-2 border rounded-md text-black focus:outline-none focus:border-blue-500"
+                    placeholder="Enter your name"
+                    required
+                    />
+                </div>
+                <button type="submit" className='create'>Remove</button>
+                <button className="ml-10 create"  onClick={()=>window.open('./','_self')}>
+                    Home
+                </button>
+                </form>
             </div>
-          ))}
         </div>
       </div>
     </section>

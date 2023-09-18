@@ -65,7 +65,7 @@ model like{
 model tweet{
   id      Int      @id @default(autoincrement())
   userId Int
-  loaction String
+  location String
   content String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

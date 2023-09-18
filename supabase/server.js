@@ -121,7 +121,18 @@ server.post('/tweet/:id', async (req, res) => {
 //get all tweets
 server.get('/tweets', async (req, res) => {
   try {
-    const tweets = await prisma.tweet.findMany();
+    
+    const tweets = await prisma.tweet.findMany({
+      include: {
+        user: {
+          select: {   
+            name  : true,  
+            email : true, 
+          },
+        },
+      },
+    });
+    
     res.status(200).json(tweets);
   } catch (error) {
     console.error('Error:', error);
@@ -144,6 +155,42 @@ server.get('/tweets/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve tweet.' });
   }
 })
+
+//post tweet by id
+server.post('/tweets/:id', async (req, res) => {
+  try{
+    const newTweet = await prisma.tweet.create({
+      data: {
+        userId: parseInt(req.params.id),
+        content: req.body.content,
+        location: req.body.location,
+        retweet : req.body.retweet,
+      }
+    });
+    res.status(201).json(newTweet);
+  }
+  catch(error){
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Failed to create tweet.' });
+  }
+})
+
+//delete tweet by id
+server.delete('/tweets/:id', async (req, res) => {
+  try{
+    const deletedTweet = await prisma.tweet.delete({
+      where: {
+        id: parseInt(req.params.id),
+      },
+    });
+    res.status(200).json(deletedTweet);
+  }
+  catch(error){
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Failed to delete tweet.' });
+  }
+})
+
 
 
 server.listen(3004, () => {
