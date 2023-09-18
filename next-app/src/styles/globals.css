@@ -36,3 +36,8 @@ body {
   border-color: rgb(237, 176, 95); 
 }
 
+.leftside{
+  border-right: 1cm;
+  border-color: gainsboro;
+
+}
