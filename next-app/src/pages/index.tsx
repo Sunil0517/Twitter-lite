@@ -1,4 +1,4 @@
-import Login from './auth/login'
+import Login from './component/login'
 
 const Index = () =>{
 
@@ -15,7 +15,7 @@ const Index = () =>{
                 Create account
               </button>
               <h2 className='text-xl font-bold mt-[10%]'>Already have an account?</h2>
-              <button className="  items-stretch item-center mt-[5%]  space-y-4  text-blue-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8"  onClick={()=>window.open('./auth/login' ,'_self')}>
+              <button className="  items-stretch item-center mt-[5%]  space-y-4  text-blue-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8"  onClick={()=>window.open('./component/login' ,'_self')}>
                 Sign in
               </button>
             </div>
