@@ -16,5 +16,3 @@ export default Home;
 function useEffect(arg0: Promise<void>, arg1: never[]) {
   throw new Error('Function not implemented.');
 }
-
-
