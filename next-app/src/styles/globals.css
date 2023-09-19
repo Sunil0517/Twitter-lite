@@ -26,16 +26,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.create {
-  background-color: white;
-  color: black;
-  border-radius: 0.5rem;
-  border-width: .1cm;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
-  border-color: rgb(237, 176, 95); 
-}
-
 .leftside{
   border-right: 1cm;
   border-color: gainsboro;

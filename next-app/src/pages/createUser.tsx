@@ -2,14 +2,10 @@ import React, { FormEvent } from 'react';
 import { useState } from 'react';
 
 export default function Page() {
-
-  
-
-
   return (
     <div className='container'>
-      <div className='flex justify-center m-8 my-8'>
-        <form onSubmit={
+      <div className='flex justify-center '>
+        <form className='w-[20%] mt-[17%]' onSubmit={
             async(e: any) => {
 
               e.preventDefault();
@@ -26,10 +22,11 @@ export default function Page() {
               }
               );
 
-              window.open('../user','_self');
+              window.open('./','_self');
               
             }
           }>
+            <h1 className="text-4xl font-bold mb-10">Create New User</h1>
           <div className="mb-4">
             <label htmlFor="name" className="block text-white-700 text-sm font-bold mb-2">
               Name:
@@ -72,8 +69,8 @@ export default function Page() {
             />
           </div>
 
-          <button type="submit" className='create'>Submit</button>
-          <button className="ml-10 create"  onClick={()=>window.open('./','_self')}>
+          <button type="submit" className='  items-stretch item-center mt-[5%]  space-y-4  text-white-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8'>Create</button>
+          <button className=" ml-[20px] items-stretch item-center mt-[5%]  space-y-4  text-white-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8"  onClick={()=>window.open('/','_self')}>
             Home
         </button>
         </form>
@@ -81,3 +78,6 @@ export default function Page() {
     </div>
   );
 }
+
+
+

@@ -13,7 +13,7 @@ const Main = () => {
                 </h1>
             </div>
             <div className="border-t-[0.5px] px-4 border-b-[0.5px] flex items-stretch py-6 space-x-2 border-gray-600 relative">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgU_co2N_FHz2xM78QfRdG4vn_pwudygLk7Q&usqp=CAU" alt="" className="w-11 h-11 bg-slate-400 rounded-full flex-none" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgU_co2N_FHz2xM78QfRdG4vn_pwudygLk7Q&usqp=CAU"  alt="" className="w-11 h-11 bg-slate-400 rounded-full flex-none" />
                 <form  className="flex flex-col w-full h-full" onSubmit={
                         async(e: any) => {
                         e.preventDefault();
