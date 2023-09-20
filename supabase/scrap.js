@@ -6,17 +6,17 @@ const main = async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.goto("https://twitter.com/home");
-  await page.waitForTimeout(200000);
+  await page.waitForTimeout(100000);
   const productdata = [];
   const $ = load(await page.content());
   $("section >div > div > div").each((_, el) => {
     if (productdata.length < 50) {
       productdata.push({
-        //           //   name: $(el).find("h3").text(),
-        // name: $(
-        //   "div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a",
-        //   el
-        // ).text(),
+        //   name: $(el).find("h3").text(),
+        name: $(
+          "div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-1wbh5a2.r-dnmrzs > div > a",
+          el
+        ).text(),
 
         caption: $(
           "div.css-1dbjc4n.r-1iusvr4.r-16y2uox.r-1777fci.r-kzbkwu > div",
@@ -48,3 +48,30 @@ main();
 
 // await page.click("#identifierNext")
 // await page.
+
+const postmethods = () => {
+  
+  fetch('tweets.json')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        fetch(`http://localhost:3004/tweets/${id}:`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(element),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+    });
+};
+
+

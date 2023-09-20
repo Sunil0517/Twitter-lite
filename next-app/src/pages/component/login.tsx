@@ -32,9 +32,7 @@ const Login = () => {
                     placeholder="Enter your password"
                     required
                     />
-                </div>
-            
-
+                </div>            
                 <button type="submit" className='  items-stretch item-center mt-[5%]  space-y-4  text-white-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8' onClick={()=>window.open('../home','_self')}> Login</button>
                 <button className=" ml-[20px] items-stretch item-center mt-[5%]  space-y-4  text-white-500 border-[2px]  border-gray-800 hover:border-slate-400  bg-black text-2xl transition duration-200 w-fit rounded-3xl py-1 px-8"  onClick={()=>window.open('../','_self')}>
                     Home
