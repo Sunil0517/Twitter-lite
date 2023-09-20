@@ -1,4 +1,5 @@
 next-app/.next
 node_modules
-supabase/.env.local
+.env
+supabase/.env
 ```
